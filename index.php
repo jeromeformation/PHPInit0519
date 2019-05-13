@@ -113,7 +113,27 @@
 
        // echo ($temp < 0) ? 'froid' : (($temp < 20) ? 'bon' : (($temp < 50)? 'chaud' : 'très chaud') );
 
+    // Les boucles
+
+    // Objectif : créer une liste à puces (10 puces)
+    echo "<ul>";
+    $i = 0;
+    while($i<10) {
+        echo "<li>Puce $i</li>";
+        $i++;
+    }
+    echo "</ul>";
+
+
+    echo "<ul>";
+    for($i=0;$i<10;$i++) {
+        echo "<li>Puce $i</li>";
+    }
+    echo "</ul>";
+
+
     ?>
+
 
 </body>
 </html>
