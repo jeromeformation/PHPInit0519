@@ -131,8 +131,46 @@
     }
     echo "</ul>";
 
+    // Tableau indexé
+    $fruits = ["Kiwi", "Pamplemousse", "Citron", "Ananas", "Banane"];
+    echo "<ul>";
+    foreach($fruits as $fruit) {
+        echo "<li>$fruit</li>";
+    }
+    echo "</ul>";
+
+    // Tableau associatif
+    $people = [
+        "firstName" => "John",
+        "lastName" => "Doe",
+        "age" => 41
+    ];
+
+
 
     ?>
+
+
+    <table>
+        <thead>
+            <tr>
+                <?php
+                    foreach ($people as $key => $value) {
+                        echo "<td>$key</td>";
+                    }
+                ?>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <?php
+                    foreach ($people as $value) {
+                        echo "<td>$value</td>";
+                    }
+                ?>
+            </tr>
+        </tbody>
+    </table>
 
 
 </body>
