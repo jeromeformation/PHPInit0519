@@ -1,10 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+<?php include 'header.php' ?>
+
+
     <h1>Ma page</h1>
     <!-- Commentaire HTML -->
     <?php
@@ -145,12 +141,7 @@
         "lastName" => "Doe",
         "age" => 41
     ];
-
-
-
     ?>
-
-
     <table>
         <thead>
             <tr>
@@ -172,6 +163,8 @@
         </tbody>
     </table>
 
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
