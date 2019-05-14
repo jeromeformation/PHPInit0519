@@ -1,5 +1,4 @@
-<?php include 'header.php' ?>
-
+<?php require 'inc/header.php' ?>
 
     <h1>Ma page</h1>
     <!-- Commentaire HTML -->
@@ -163,8 +162,4 @@
         </tbody>
     </table>
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+<?php require('inc/footer.php') ?>
