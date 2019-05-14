@@ -1,39 +1,41 @@
 <?php require 'inc/header.php' ?>
 
-<h1>Les tableaux</h1>
+<main class="container">
+    <h1>Les tableaux</h1>
+    <section class="row">
+    <?php
+        $products = [
+            [
+                "name" => "Hamac",
+                "description" => "Pour se reposer après 5 jours de PHP",
+                "image_name" => "hamac.jpg"
+            ],[
+                "name" => "Parasol",
+                "description" => "Pour faire de l'ombre au Hamac",
+                "image_name" => "parasol.jpg"
+            ],
+            [
+                "name" => "Ballon",
+                "description" => "Pour jouer",
+                "image_name" => "ballon.jpg"
+            ]
+        ];
+        // On souhaite récupérer le Hamac
+        //var_dump($products[0]);
+        // On souhaite récupérer le nom du Hamac
+        //var_dump($products[0]['name']);
 
-<?php
-    $products = [
-        [
-            "name" => "Hamac",
-            "description" => "Pour se reposer après 5 jours de PHP"
-        ],[
-            "name" => "Parasol",
-            "description" => "Pour faire de l'ombre au Hamac"
-        ],
-        [
-            "name" => "Ballon",
-            "description" => "Pour jouer"
-        ]
-    ];
-    // On souhaite récupérer le Hamac
-    //var_dump($products[0]);
-    // On souhaite récupérer le nom du Hamac
-    //var_dump($products[0]['name']);
-
-    foreach ($products as $product) :
-?>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+        foreach ($products as $product) :
+    ?>
+        <div class="card col-4">
+            <img src="img/uploads/<?= $product['image_name']; ?>" class="card-img-top" alt="Image de <?= $product['name']; ?>">
+            <div class="card-body">
+                <h5 class="card-title"><?= $product['name']; ?></h5>
+                <p class="card-text"><?= $product['description']; ?></p>
+                <a href="#" class="card-link btn btn-outline-info">Détail</a>
+            </div>
         </div>
-    </div>
-<?php
-    endforeach;
-
-    require 'inc/footer.php';
-?>
+    <?php endforeach; ?>
+    </section>
+</main>
+<?php require 'inc/footer.php'; ?>
