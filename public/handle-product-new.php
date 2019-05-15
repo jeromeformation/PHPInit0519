@@ -1,13 +1,8 @@
 <?php
-
-var_dump($_POST);
-
-// On vérifie que le formulaire a été soumis
-// $_POST : les variables du formulaires (attribut HTML name)
-// empty() : permet de tester "est-ce que c'est vide ?"
-// empty($_POST) : si $_POST est vide
-// !empty($_POST) : si $_POST n'est pas vide
-if(!empty($_POST)) {
+// On vérifie que le formulaire a été soumis (méthode POST)
+// $_SERVER contient un tas de variables (navigateurs/serveurs)
+// La clef "REQUEST_METHOD" contient la méthode HTTP utilisée
+if($_SERVER['REQUEST_METHOD'] === "POST") {
 
     /* Test du nom */
 
@@ -125,7 +120,9 @@ if(!empty($_POST)) {
             var_dump("Il faut saisir un nombre de vue !");
         } else {
             //// Le type
-            if (!is_numeric($_POST['nbviews'])) {
+            if (!
+
+            ($_POST['nbviews'])) {
                 var_dump("Veuillez saisir un nombre de vues correct !");
             }
             $_POST['nbviews'] = intval($_POST['nbviews']);
