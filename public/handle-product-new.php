@@ -103,7 +103,7 @@ if(!empty($_POST)) {
         } else {
             // On décompose la date de création en 3 parties
             $tabCreatedAt = explode('-', $_POST['createdat']);
-            // On teste la taille (10 caractères)
+            // On vérifie qu'on a bien les 3 composantes de la date
             if(sizeof($tabCreatedAt) === 3) {
                 // On vérifie si la date est correcte
                 if(!checkdate($tabCreatedAt[1], $tabCreatedAt[2], $tabCreatedAt[0])){
@@ -115,7 +115,30 @@ if(!empty($_POST)) {
         }
     }
 
-
+    /* Test du prix */
+    //// Existence
+    if (!array_key_exists('nbviews', $_POST)) {
+        var_dump("Le nom de vues n'existe pas !");
+    } else {
+        //// La non-nullité
+        if ($_POST['nbviews'] === '') {
+            var_dump("Il faut saisir un nombre de vue !");
+        } else {
+            //// Le type
+            if (!is_int($_POST['nbviews'])) {
+                var_dump("Veuillez saisir un nombre de vues correct !");
+            }
+            $_POST['nbviews'] = intval($_POST['nbviews']);
+            //// Valeur mini (0)
+            if ($_POST['nbviews'] < 0) {
+                var_dump("Le nombre de vues doit être positif !");
+            }
+            //// Valeur maxi
+            if($_POST['nbviews'] > 19E19) {
+                var_dump("Le nombre de vues est trop grand !");
+            }
+        }
+    }
 
 
     var_dump($_POST);
