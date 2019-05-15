@@ -37,4 +37,23 @@ if(!empty($_POST)) {
         }
     }
 
+    /* Test de description */
+    if(!array_key_exists('description', $_POST)) {
+        var_dump("La description n'existe pas !");
+    } else {
+        //// Le non-nullité
+        if($_POST['description'] === '') {
+            var_dump("Il faut saisir une description !");
+        } else {
+            //// Le type
+            // pas de verif pour les chaînes de caractères
+            //// Valeur mini (0)
+            // pas de verif pour les chaînes de caractères
+            //// Valeur maxi (255)
+            if(strlen($_POST['description']) > 65535) {
+                var_dump("La description est trop long (max 65535 caractères)");
+            }
+        }
+    }
+
 }
