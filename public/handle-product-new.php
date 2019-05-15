@@ -38,10 +38,11 @@ if(!empty($_POST)) {
     }
 
     /* Test de description */
+    //// Existence
     if(!array_key_exists('description', $_POST)) {
         var_dump("La description n'existe pas !");
     } else {
-        //// Le non-nullité
+        //// La non-nullité
         if($_POST['description'] === '') {
             var_dump("Il faut saisir une description !");
         } else {
@@ -52,6 +53,30 @@ if(!empty($_POST)) {
             //// Valeur maxi (255)
             if(strlen($_POST['description']) > 65535) {
                 var_dump("La description est trop long (max 65535 caractères)");
+            }
+        }
+    }
+    /* Test du prix */
+    //// Existence
+    if (!array_key_exists('price', $_POST)) {
+        var_dump("Le price n'existe pas !");
+    } else {
+        //// La non-nullité
+        if ($_POST['price'] === '') {
+            var_dump("Il faut saisir un prix !");
+        } else {
+            //// Le type
+            if (!is_numeric($_POST['price'])) {
+                var_dump("Veuillez saisir un prix correct !");
+            }
+            $_POST['price'] = floatval($_POST['price']);
+            //// Valeur mini (0)
+            if ($_POST['price'] < 0) {
+                var_dump("Le prix doit être positif !");
+            }
+            //// Valeur maxi
+            if($_POST['price'] > 9999999.99) {
+                var_dump("Le prix doit être inférieur à 10 millions !");
             }
         }
     }
