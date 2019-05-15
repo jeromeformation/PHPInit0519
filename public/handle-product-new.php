@@ -93,7 +93,6 @@ if(!empty($_POST)) {
 
 
     /* Test de la date de création */
-    /* Test du prix */
     //// Existence
     if (!array_key_exists('createdat', $_POST)) {
         var_dump("La date de création n'existe pas !");
@@ -102,12 +101,12 @@ if(!empty($_POST)) {
         if ($_POST['createdat'] === '') {
             var_dump("Il faut saisir la date de création!");
         } else {
+            // On décompose la date de création en 3 parties
+            $tabCreatedAt = explode('-', $_POST['createdat']);
             // On teste la taille (10 caractères)
-            if(strlen($_POST['createdat']) === 10 ) {
-                // On décompose la date de création en 3 parties
-                $tabCreatedAt = explode('-', $_POST['createdat']);
-                // On check si la date est correcte
-                if(!checkdate($tabCreatedAt[1], $tabCreatedAt[2], $tabCreatedAt[0])) {
+            if(sizeof($tabCreatedAt) === 3) {
+                // On vérifie si la date est correcte
+                if(!checkdate($tabCreatedAt[1], $tabCreatedAt[2], $tabCreatedAt[0])){
                     var_dump("Il faut saisir une date valide!");
                 }
             } else {
