@@ -1,10 +1,15 @@
-<?php require 'inc/header.php' ; ?>
+<?php
+// Inclusion du HTML d'en tête + navbar
+require 'inc/header.php' ;
+// Inclusion du fichier PHP de traitement du formulaire
+require 'handle-product-new.php' ;
+?>
 
 <main class="container">
 
     <h1>Ajout d'un produit</h1>
 
-    <form>
+    <form method="post">
         <div class="form-group">
             <label for="name">Nom</label>
             <input type="text" class="form-control" id="name" name="name">
@@ -18,7 +23,7 @@
             <input type="number" min="0" step="0.01" class="form-control" id="price" name="price">
         </div>
         <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="ispublished" name="ispublished">
+            <input type="checkbox" class="custom-control-input" id="ispublished" name="ispublished" value="off">
             <label class="custom-control-label" for="ispublished">Le produit doit-il être publié ?</label>
         </div>
         <div class="form-group">
@@ -33,6 +38,8 @@
         <input type="submit" value="Créer le produit" class="btn btn-outline-success">
 
     </form>
+
+
 
 </main>
 
