@@ -125,7 +125,7 @@ if(!empty($_POST)) {
             var_dump("Il faut saisir un nombre de vue !");
         } else {
             //// Le type
-            if (!is_int($_POST['nbviews'])) {
+            if (!is_numeric($_POST['nbviews'])) {
                 var_dump("Veuillez saisir un nombre de vues correct !");
             }
             $_POST['nbviews'] = intval($_POST['nbviews']);
@@ -141,7 +141,6 @@ if(!empty($_POST)) {
     }
 
 
-    var_dump($_POST);
 
 }
 
