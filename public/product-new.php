@@ -23,7 +23,7 @@ require 'handle-product-new.php' ;
             <input type="number" min="0" step="0.01" class="form-control" id="price" name="price">
         </div>
         <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="ispublished" name="ispublished" value="off">
+            <input type="checkbox" class="custom-control-input" id="ispublished" name="ispublished">
             <label class="custom-control-label" for="ispublished">Le produit doit-il être publié ?</label>
         </div>
         <div class="form-group">

@@ -74,11 +74,30 @@ if(!empty($_POST)) {
             if ($_POST['price'] < 0) {
                 var_dump("Le prix doit être positif !");
             }
-            //// Valeur maxi
+            //// Valeur maxi (10 millions)
             if($_POST['price'] > 9999999.99) {
                 var_dump("Le prix doit être inférieur à 10 millions !");
             }
         }
     }
 
+    /* Test checkbox etat publication */
+    if (!array_key_exists('ispublished', $_POST)) {
+        $_POST['ispublished'] = false;
+    } else {
+        $_POST['ispublished'] = true;
+    }
+
+    // syntaxe alternative
+    // $_POST['ispublished'] = (array_key_exists('ispublished', $_POST));
+
+    var_dump($_POST);
+
 }
+
+
+
+
+
+
+
