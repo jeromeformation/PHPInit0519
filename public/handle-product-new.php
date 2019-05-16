@@ -1,4 +1,6 @@
 <?php
+
+
 // On vérifie que le formulaire a été soumis (méthode POST)
 // $_SERVER contient un tas de variables (navigateurs/serveurs)
 // La clef "REQUEST_METHOD" contient la méthode HTTP utilisée
@@ -120,9 +122,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
             var_dump("Il faut saisir un nombre de vue !");
         } else {
             //// Le type
-            if (!
-
-            ($_POST['nbviews'])) {
+            if (!is_numeric($_POST['nbviews'])) {
                 var_dump("Veuillez saisir un nombre de vues correct !");
             }
             $_POST['nbviews'] = intval($_POST['nbviews']);
