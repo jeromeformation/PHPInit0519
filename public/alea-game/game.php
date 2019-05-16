@@ -5,6 +5,7 @@ require '../inc/header.php';
 require 'handle-game.php';
 ?>
 
+<!-- Création du formulaire de saisie de la lettre -->
 
 <?php
 // Récupération du footer
