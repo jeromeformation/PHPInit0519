@@ -2,7 +2,7 @@
 
 /**
  * Verification de la clef dans la superglobale POST et renvoi
- * de l'éventuel message d'erreur à afficher dans l'HTML
+ * de l'éventuel message d'erreur à afficher dans l'HTML (texte)
  * @param string $key La clef située dans $_POST
  * @param int $max Le nombre de caractères maximum autorisé
  * @return string L'éventuel message d'erreur
@@ -19,3 +19,53 @@ function checkPostText(string $key, int $max): string
     // On retourne l'éventuel message ou une chaîne de caractères vide
     return $message ?? '';
 }
+
+
+/**
+ * Verification de la clef dans la superglobale POST et renvoi
+ * de l'éventuel message d'erreur à afficher dans l'HTML (nombres)
+ * @param string $key La clef dans $_POST
+ * @param float $min Valeur mini autorisée
+ * @param float $max Valueur maxi autorisée
+ * @param bool $isFloat Est-ce un nombre à virgule ? (intval, floatval)
+ * @return string L'éventuel message d'erreur
+ */
+function checkPostNumber(string $key, float $min, float $max, bool $isFloat = true): string
+{
+    //// Existence
+    if (!array_key_exists($key, $_POST) || $_POST[$key] === '' || is_null($_POST[$key])) {
+        $message = "Veuillez saisir une valeur";
+    } elseif (!is_numeric($_POST[$key])) {
+        $message = "La valeur saisir doit être un nombre";
+    } else {
+        if ($isFloat) {
+            $_POST[$key] = floatval($_POST[$key]);
+        } else {
+            $_POST[$key] = intval($_POST[$key]);
+        }
+
+        //// Valeur mini (0)
+        if ($_POST[$key] < $min) {
+            $message = "La valeur doit être supérieur à $min";
+        }
+        //// Valeur maxi (10 millions)
+        if ($_POST[$key] > $max) {
+            $message = "La valeur doit être inférieur à $max";
+        }
+    }
+    return $message ?? "";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

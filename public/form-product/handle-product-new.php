@@ -13,32 +13,9 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
     /* Test de description */
     $errorMessageDesc = checkPostText('description', 65535);
     var_dump($errorMessageDesc);
-
-
     /* Test du prix */
-    //// Existence
-    if (!array_key_exists('price', $_POST)) {
-        var_dump("Le price n'existe pas !");
-    } else {
-        //// La non-nullité
-        if ($_POST['price'] === '') {
-            var_dump("Il faut saisir un prix !");
-        } else {
-            //// Le type
-            if (!is_numeric($_POST['price'])) {
-                var_dump("Veuillez saisir un prix correct !");
-            }
-            $_POST['price'] = floatval($_POST['price']);
-            //// Valeur mini (0)
-            if ($_POST['price'] < 0) {
-                var_dump("Le prix doit être positif !");
-            }
-            //// Valeur maxi (10 millions)
-            if($_POST['price'] > 9999999.99) {
-                var_dump("Le prix doit être inférieur à 10 millions !");
-            }
-        }
-    }
+    $errorMessagePrice = checkPostNumber('price', 0, 9999999.99);
+    var_dump($errorMessagePrice);
 
     /* Test checkbox etat publication */
     if (!array_key_exists('ispublished', $_POST)) {
@@ -74,32 +51,9 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
         }
     }
 
-    /* Test du prix */
-    //// Existence
-    if (!array_key_exists('nbviews', $_POST)) {
-        var_dump("Le nom de vues n'existe pas !");
-    } else {
-        //// La non-nullité
-        if ($_POST['nbviews'] === '') {
-            var_dump("Il faut saisir un nombre de vue !");
-        } else {
-            //// Le type
-            if (!is_numeric($_POST['nbviews'])) {
-                var_dump("Veuillez saisir un nombre de vues correct !");
-            }
-            $_POST['nbviews'] = intval($_POST['nbviews']);
-            //// Valeur mini (0)
-            if ($_POST['nbviews'] < 0) {
-                var_dump("Le nombre de vues doit être positif !");
-            }
-            //// Valeur maxi
-            if($_POST['nbviews'] > 19E19) {
-                var_dump("Le nombre de vues est trop grand !");
-            }
-        }
-    }
-
-
+    /* Test du nombre de vues */
+    $errorMessageNbViews = checkPostNumber('nbviews', 0, 19E19, false);
+    var_dump($errorMessageNbViews);
 
 }
 
