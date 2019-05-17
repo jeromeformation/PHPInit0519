@@ -23,7 +23,6 @@ var_dump("Nombre d'essais en session : " . $_SESSION['nb-essais']);
 
 // Récupération de la lettre saisie par l'utilisateur (input)
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
     var_dump("Lettre soumise : " . $_POST['letter']);
     // On vérifie si la lettre a bien été saisie
     if (!array_key_exists('letter', $_POST) || $_POST['letter'] === '') {

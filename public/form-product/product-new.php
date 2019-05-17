@@ -1,8 +1,8 @@
 <?php
 // Inclusion du HTML d'en tête + navbar
-require 'inc/header.php' ;
+require '../inc/header.php';
 // Inclusion du fichier PHP de traitement du formulaire
-require 'handle-product-new.php' ;
+require 'handle-product-new.php';
 ?>
 
 <main class="container">
@@ -43,4 +43,4 @@ require 'handle-product-new.php' ;
 
 </main>
 
-<?php require 'inc/footer.php' ; ?>
+<?php require '../inc/footer.php'; ?>

@@ -19,8 +19,16 @@ require 'handle-game.php';
         </div>
         <input type="submit" value="Vérifier" class="btn btn-outline-info">
     </form>
+
+
+    <p id="message" data-message="<?= $resultMessage; ?>">Blabla</p>
 </main>
 
+<script>
+    let paragraphe = document.querySelector("#message");
+    console.log(paragraphe);
+    console.log(paragraphe.getAttribute("data-message"));
+</script>
 
 
 <?php

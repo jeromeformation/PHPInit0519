@@ -1,5 +1,6 @@
 <?php
-
+// Inclusion des fonctions de formulaires
+require 'form-functions.php';
 
 // On vérifie que le formulaire a été soumis (méthode POST)
 // $_SERVER contient un tas de variables (navigateurs/serveurs)
@@ -7,52 +8,13 @@
 if($_SERVER['REQUEST_METHOD'] === "POST") {
 
     /* Test du nom */
-
-    //// L'existence
-    // $_POST : tableau associatif
-    // -> clefs : attribut "name" de l'input/textarea
-    // -> valeurs : saisi utilisateur
-    // array_key_exists() : vérifie si une clef est définie dans un tableau
-    // array_key_exists('name', $_POST) : vérifie que la clef "name" existe dans "$_POST"
-    // !array_key_exists('name', $_POST) : vérifie si la clef "name" n'existe pas dans "$_POST"
-
-    if(!array_key_exists('name', $_POST)) {
-        var_dump("Le nom n'existe pas !");
-    } else {
-        //// Le non-nullité
-        if($_POST['name'] === '') {
-            var_dump("Il faut saisir un nom !");
-        } else {
-            //// Le type
-            // pas de verif pour les chaînes de caractères
-            //// Valeur mini (0)
-            // pas de verif pour les chaînes de caractères
-            //// Valeur maxi (255)
-            if(strlen($_POST['name']) > 255) {
-                var_dump("Le nom est trop long (max 255 caractères)");
-            }
-        }
-    }
-
+    $errorMessageName = checkPostText('name', 255);
+    var_dump($errorMessageName);
     /* Test de description */
-    //// Existence
-    if(!array_key_exists('description', $_POST)) {
-        var_dump("La description n'existe pas !");
-    } else {
-        //// La non-nullité
-        if($_POST['description'] === '') {
-            var_dump("Il faut saisir une description !");
-        } else {
-            //// Le type
-            // pas de verif pour les chaînes de caractères
-            //// Valeur mini (0)
-            // pas de verif pour les chaînes de caractères
-            //// Valeur maxi (255)
-            if(strlen($_POST['description']) > 65535) {
-                var_dump("La description est trop long (max 65535 caractères)");
-            }
-        }
-    }
+    $errorMessageDesc = checkPostText('description', 65535);
+    var_dump($errorMessageDesc);
+
+
     /* Test du prix */
     //// Existence
     if (!array_key_exists('price', $_POST)) {
