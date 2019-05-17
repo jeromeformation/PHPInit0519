@@ -43,7 +43,6 @@ function checkPostNumber(string $key, float $min, float $max, bool $isFloat = tr
         } else {
             $_POST[$key] = intval($_POST[$key]);
         }
-
         //// Valeur mini (0)
         if ($_POST[$key] < $min) {
             $message = "La valeur doit être supérieur à $min";
