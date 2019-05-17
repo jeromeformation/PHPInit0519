@@ -7,6 +7,10 @@ require 'handle-game.php';
 
 <main class="container">
     <h1>Jeu des lettres aléatoires</h1>
+    <?php if(!empty($resultMessage)) : ?>
+        <h2>Résultat</h2>
+        <p><?= $resultMessage; ?></p>
+    <?php endif; ?>
     <!-- Création du formulaire de saisie de la lettre -->
     <form method="post">
         <div class="form-group">
