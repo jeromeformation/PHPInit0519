@@ -20,7 +20,6 @@ function checkPostText(string $key, int $max): string
     return $message ?? '';
 }
 
-
 /**
  * Verification de la clef dans la superglobale POST et renvoi
  * de l'éventuel message d'erreur à afficher dans l'HTML (nombres)
@@ -55,9 +54,36 @@ function checkPostNumber(string $key, float $min, float $max, bool $isFloat = tr
     return $message ?? "";
 }
 
+/**
+ * Vérification d'un input de type "date", retour du message d'erreur
+ * @param string $key La clef dans $_POST
+ * @return string Eventuel message d'erreur
+ */
+function checkPostDate(string $key): string
+{
+    if (!array_key_exists($key, $_POST) || $_POST[$key] === '') {
+        $message = "Merci de saisir la date";
+    } else {
+        // On décompose la date de création en 3 parties
+        $tabCreatedAt = explode('-', $_POST[$key]);
+        // On vérifie qu'on a bien les 3 composantes de la date
+        if(
+            sizeof($tabCreatedAt) !== 3 ||
+            !checkdate($tabCreatedAt[1], $tabCreatedAt[2], $tabCreatedAt[0])
+        ) {
+            $message = "Il faut saisir une date valide!";
+        }
+    }
+    return $message ?? "";
+}
 
-
-
+function sanitizeRadio(string $key): void {
+    if (!array_key_exists($key, $_POST)) {
+        $_POST[$key] = false;
+    } else {
+        $_POST[$key] = true;
+    }
+}
 
 
 
