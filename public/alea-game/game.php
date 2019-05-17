@@ -11,7 +11,7 @@ require 'handle-game.php';
     <form method="post">
         <div class="form-group">
             <label for="letter">Choisissez une lettre :</label>
-            <input type="text" id="letter" name="letter">
+            <input type="text" id="letter" name="letter" maxlength="1" required autofocus>
         </div>
         <input type="submit" value="Vérifier" class="btn btn-outline-info">
     </form>
